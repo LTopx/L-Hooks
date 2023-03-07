@@ -1,29 +1,27 @@
 {
-  "name": "LHooks",
+  "name": "l-hooks",
   "version": "0.0.1",
   "description": "A react library developed with dumi",
+  "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
     "build": "father build",
     "build:watch": "father dev",
+    "dev": "dumi dev",
     "docs:build": "dumi build",
-    "prepare": "husky install && dumi setup",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepublishOnly": "father doctor && npm run build"
+    "pb": "cd src/hooks && npm publish",
+    "prepare": "husky install && dumi setup",
+    "prepublishOnly": "father doctor && npm run build",
+    "start": "npm run dev"
   },
-  "authors": [
-    "lsx"
-  ],
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -46,30 +44,26 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
-  },
   "devDependencies": {
     "@babel/core": "7.21.0",
     "@commitlint/cli": "17.4.4",
     "@commitlint/config-conventional": "17.4.4",
+    "@types/qs": "6.9.7",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@umijs/lint": "4.0.56",
-    "antd": "^5.3.0",
+    "antd": "5.3.0",
     "dumi": "2.1.15",
     "eslint": "8.35.0",
     "father": "4.1.6",
     "husky": "8.0.3",
     "lint-staged": "13.1.2",
+    "lx-hooks": "0.0.3",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
     "prettier-plugin-organize-imports": "3.2.2",
     "prettier-plugin-packagejson": "2.4.3",
+    "qs": "6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
@@ -77,5 +71,15 @@
     "stylelint": "15.2.0",
     "typescript": "4.9.5",
     "webpack": "5.75.0"
-  }
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "lsx"
+  ]
 }

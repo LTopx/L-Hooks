@@ -11,56 +11,65 @@ order: 0
 ### 基础用法
 
 ```tsx
-import { Button } from 'antd';
-import { useEffect } from 'react';
-import useFetch from '../../src/Hooks/useFetch';
+import { Button, List, Space } from 'antd';
+import { useFetch } from 'lx-hooks';
+import { useState } from 'react';
 
 export default () => {
-  useEffect(() => {
-    console.log(useFetch, 'useFetch');
-  }, []);
+  const [data, setData] = useState([]);
+
+  const { run, loading } = useFetch({
+    url: 'https://api.vvhan.com/api/hotlist',
+    method: 'get',
+    headers: {},
+  });
+
+  const getData = async () => {
+    const { data } = await run<{ data: any }>({ type: 'baiduRD' });
+    setData(data.slice(0, 5));
+  };
 
   return (
-    <div>
-      <Button>点击测试</Button>
-    </div>
+    <Space direction="vertical" style={{ width: '100%' }}>
+      <Button type="primary" loading={loading} onClick={getData}>
+        点击获取百度热点
+      </Button>
+      <List
+        size="small"
+        bordered
+        loading={loading}
+        dataSource={data}
+        renderItem={(item) => <List.Item>{item.title}</List.Item>}
+      />
+    </Space>
   );
-};
-
-const MountComponent = () => {
-  useMount(() => {
-    alert('mount 阶段被执行了');
-  });
-  return <div>新组件挂载了</div>;
 };
 ```
 
 ## API
 
 ```typescript
-const [state, { toggle, set, setTrue, setFalse }] = useBoolean(
-  defaultValue?: boolean,
-);
+const {
+  run: (...params: TParams) => Promise<TParams>,
+  loading: boolean,
+} = useFetch<TResponse>({
+    url: string,
+    method: FetchRequestMethod,
+    headers?: HeadersInit,
+});
 ```
-
-### Params
-
-| 参数         | 说明                     | 类型      | 默认值  |
-| ------------ | ------------------------ | --------- | ------- |
-| defaultValue | 可选项，传入默认的状态值 | `boolean` | `false` |
 
 ### Result
 
-| 参数    | 说明     | 类型      |
-| ------- | -------- | --------- |
-| state   | 状态值   | `boolean` |
-| actions | 操作集合 | `Actions` |
+| 参数    | 说明               | 类型                                       |
+| ------- | ------------------ | ------------------------------------------ |
+| run     | 执行请求，传递参数 | `(...params: TParams) => Promise<TParams>` |
+| loading | 请求是否正在执行   | `boolean`                                  |
 
-### Actions
+### Options
 
-| 参数     | 说明         | 类型                       |
-| -------- | ------------ | -------------------------- |
-| toggle   | 切换 state   | `() => void`               |
-| set      | 设置 state   | `(value: boolean) => void` |
-| setTrue  | 设置为 true  | `() => void`               |
-| setFalse | 设置为 false | `() => void`               |
+| 参数    | 说明         | 类型                 | 默认值 |
+| ------- | ------------ | -------------------- | ------ |
+| url     | 请求地址 url | `string`             | -      |
+| method  | 请求 method  | `FetchRequestMethod` | GET    |
+| headers | 请求 headers | `HeadersInit`        | -      |

@@ -4,19 +4,22 @@ specifiers:
   '@babel/core': 7.21.0
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
+  '@types/qs': 6.9.7
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@umijs/lint': 4.0.56
-  antd: ^5.3.0
+  antd: 5.3.0
   dumi: 2.1.15
   eslint: 8.35.0
   father: 4.1.6
   husky: 8.0.3
   lint-staged: 13.1.2
+  lx-hooks: 0.0.3
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-organize-imports: 3.2.2
   prettier-plugin-packagejson: 2.4.3
+  qs: 6.11.1
   react: 18.2.0
   react-dom: 18.2.0
   react-is: 18.2.0
@@ -29,6 +32,7 @@ devDependencies:
   '@babel/core': 7.21.0
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
+  '@types/qs': 6.9.7
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@umijs/lint': 4.0.56_fljzp7octluse54diakttdyai4
@@ -38,10 +42,12 @@ devDependencies:
   father: 4.1.6_zc4gfq3cdwh2z7mj476yc2jf4m
   husky: 8.0.3
   lint-staged: 13.1.2
+  lx-hooks: 0.0.3
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-organize-imports: 3.2.2_silln3pw57har7jydmecgzoypa
   prettier-plugin-packagejson: 2.4.3_prettier@2.8.4
+  qs: 6.11.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-is: 18.2.0
@@ -2282,6 +2288,10 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/qs/6.9.7:
+    resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
 
   /@types/react-dom/18.0.11:
@@ -7509,6 +7519,10 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lx-hooks/0.0.3:
+    resolution: {integrity: sha512-hQ+8XFPfZkA48wMDqGDuZ16Yt0T+xpIbe7h8qixTHrAeJeAbCNTkSNYJVV+TUnXSKsV1dIzEt95865iIw/Ohyg==}
+    dev: true
+
   /lz-string/1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -9574,6 +9588,13 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: true
+
+  /qs/6.11.1:
+    resolution: {integrity: sha512-0wsrzgTz/kAVIeuxSjnpGC56rzYtr6JT/2BwEvMaPhFIoYa1aGO8LbzuU1R0uUYQkLpWBTOj0l/CLAJB64J6nQ==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
     dev: true
 
   /query-string/6.14.1:
