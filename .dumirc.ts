@@ -1,7 +1,9 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  outputPath: 'docs-dist',
+  base: '/LHooks',
+  publicPath: '/LHooks/',
+  outputPath: 'dist',
   themeConfig: {
     name: 'LHooks',
   },

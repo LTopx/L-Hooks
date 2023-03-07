@@ -1,40 +1,26 @@
-# LHooks
+<h1 align="center">
+  LHooks
+</h1>
 
-[![NPM version](https://img.shields.io/npm/v/LHooks.svg?style=flat)](https://npmjs.org/package/LHooks)
-[![NPM downloads](http://img.shields.io/npm/dm/LHooks.svg?style=flat)](https://npmjs.org/package/LHooks)
+<div align="center">一个普通的 React Hooks 库</div>
 
-A react library developed with dumi
+## ✨ 特性
 
-## Usage
+- 包含基础 Hooks
+- 使用 TypeScript 构建，提供完整的类型定义文件
 
-TODO
-
-## Options
-
-TODO
-
-## Development
+## 📦 安装
 
 ```bash
-# install dependencies
-$ pnpm install
-
-# develop library by docs demo
-$ pnpm start
-
-# build library source code
-$ pnpm run build
-
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# check your project for potential problems
-$ pnpm run doctor
+$ npm install --save l-hooks
+# or
+$ yarn add l-hooks
+# or
+$ pnpm add l-hooks
 ```
 
-## LICENSE
+## 🔨 使用
 
-MIT
+```js
+import { useFetch } from 'l-hooks';
+```

@@ -1,5 +1,6 @@
 ---
 order: 0
+toc: content
 ---
 
 # useFetch
@@ -11,6 +12,10 @@ order: 0
 ### 基础用法
 
 ```tsx
+/**
+ * title: 基础用法
+ * description: 通过`run()`方法调用来发起请求获取数据
+ */
 import { Button, List, Space } from 'antd';
 import { useFetch } from 'lx-hooks';
 import { useState } from 'react';
@@ -25,6 +30,7 @@ export default () => {
   });
 
   const getData = async () => {
+    setData([]);
     const { data } = await run<{ data: any }>({ type: 'baiduRD' });
     setData(data.slice(0, 5));
   };

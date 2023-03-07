@@ -1,7 +1,7 @@
 {
   "name": "lx-hooks",
-  "version": "0.0.3",
-  "description": "hooks for reaact",
+  "version": "0.0.6",
+  "description": "Hooks for react",
   "keywords": [
     "react",
     "hooks"

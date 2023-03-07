@@ -1,3 +1,4 @@
+import useClipboard from './useClipboard';
 import useFetch from './useFetch';
 
-export { useFetch };
+export { useFetch, useClipboard };

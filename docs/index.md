@@ -1,12 +1,12 @@
 ---
 hero:
-  title: library
-  description: A react library developed with dumi
+  title: Lx-Hooks
+  description: 一个用起来能够解决一些问题的hooks
   actions:
-    - text: Hello
-      link: /
-    - text: World
-      link: /
+    - text: 开始
+      link: /hooks
+    - text: Github
+      link: https://github.com/Peek-A-Booo/LHooks
 features:
   - title: Hello
     emoji: 💎
