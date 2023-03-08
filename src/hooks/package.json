@@ -1,6 +1,6 @@
 {
-  "name": "lx-hooks",
-  "version": "0.0.6",
+  "name": "l-hooks",
+  "version": "0.0.8",
   "description": "Hooks for react",
   "keywords": [
     "react",
@@ -19,5 +19,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "@types/qs": ">=6.9.7",
+    "qs": ">=6.11.1"
   }
 }

@@ -1,6 +1,6 @@
 ---
 hero:
-  title: Lx-Hooks
+  title: L-Hooks
   description: 一个用起来能够解决一些问题的hooks
   actions:
     - text: 开始
