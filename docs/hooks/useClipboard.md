@@ -17,7 +17,7 @@ toc: content
  * description: 可以复制string、number、object
  */
 import { Button, message } from 'antd';
-import { useClipboard } from 'lx-hooks';
+import { useClipboard } from 'l-hooks';
 
 export default () => {
   const { copy } = useClipboard();

@@ -1,8 +1,21 @@
 {
   "name": "l-hooks",
-  "version": "0.0.1",
-  "description": "A react library developed with dumi",
+  "version": "0.0.11",
+  "description": "A react hooks library developed with dumi",
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "homepage": "https://github.com/Peek-A-Booo/LHooks#readme",
+  "bugs": {
+    "url": "https://github.com/Peek-A-Booo/LHooks/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peek-A-Booo/LHooks.git"
+  },
   "license": "MIT",
+  "main": "dist/index.d.ts",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,10 +31,8 @@
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "pb": "cd src/hooks && npm publish",
     "prepare": "husky install && dumi setup",
-    "prepublishOnly": "father doctor && npm run build",
-    "start": "npm run dev"
+    "prepublishOnly": "father doctor && npm run build"
   },
   "commitlint": {
     "extends": [
@@ -59,8 +70,8 @@
     "father": "4.1.6",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
+    "l-hooks": "0.0.11",
     "lint-staged": "13.1.2",
-    "lx-hooks": "0.0.5",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
     "prettier-plugin-organize-imports": "3.2.2",
@@ -75,6 +86,8 @@
     "webpack": "5.75.0"
   },
   "peerDependencies": {
+    "@types/qs": ">=6.9.7",
+    "qs": ">=6.11.1",
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
   },

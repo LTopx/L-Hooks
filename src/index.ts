@@ -1,1 +1,2 @@
-export { default as Foo } from './Component';
+export { useClipboard, useFetch } from './hooks';
+export type { FetchConfig, FetchRequestMethod } from './hooks';
