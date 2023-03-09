@@ -14,7 +14,7 @@ specifiers:
   father: 4.1.6
   gh-pages: 5.0.0
   husky: 8.0.3
-  l-hooks: 0.0.11
+  l-hooks: 0.0.14
   lint-staged: 13.1.2
   postcss: 8.4.21
   prettier: 2.8.4
@@ -43,7 +43,7 @@ devDependencies:
   father: 4.1.6_zc4gfq3cdwh2z7mj476yc2jf4m
   gh-pages: 5.0.0
   husky: 8.0.3
-  l-hooks: 0.0.11_dgg5gja2vyp5m2c4smsanxdiai
+  l-hooks: 0.0.14_dgg5gja2vyp5m2c4smsanxdiai
   lint-staged: 13.1.2
   postcss: 8.4.21
   prettier: 2.8.4
@@ -7263,8 +7263,8 @@ packages:
     resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
     dev: true
 
-  /l-hooks/0.0.11_dgg5gja2vyp5m2c4smsanxdiai:
-    resolution: {integrity: sha512-4hCfLptQhCgwDUiXLfWpPMOKJk6PDEmjmyjhCiVqWOJVL+ivgV/IBJPsYyUsHZzJgOVoLFTxWdX2mTjyrwhnSQ==}
+  /l-hooks/0.0.14_dgg5gja2vyp5m2c4smsanxdiai:
+    resolution: {integrity: sha512-xPEfkzbIC9qpBZFhzMu+4yRwXu+EidFJ5AJrhrGxFcTlt1VlqZ8YcPCNt8YL/rccbxUdsejKTYnx/dceUgPleQ==}
     peerDependencies:
       '@types/qs': '>=6.9.7'
       qs: '>=6.11.1'

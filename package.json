@@ -1,6 +1,6 @@
 {
   "name": "l-hooks",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "description": "A react hooks library developed with dumi",
   "keywords": [
     "react",
@@ -26,13 +26,15 @@
     "build:watch": "father dev",
     "deploy": "gh-pages -d dist",
     "dev": "dumi dev",
+    "doc:pub": "dumi build && gh-pages -d dist",
     "docs:build": "dumi build",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepublishOnly": "father doctor && npm run build",
+    "pub": "npm publish"
   },
   "commitlint": {
     "extends": [
@@ -70,7 +72,7 @@
     "father": "4.1.6",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
-    "l-hooks": "0.0.11",
+    "l-hooks": "0.0.14",
     "lint-staged": "13.1.2",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
