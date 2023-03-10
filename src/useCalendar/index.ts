@@ -35,7 +35,6 @@ export interface LunarDateInfo {
   gzYear: string;
   isLeap: boolean;
   isTerm: boolean;
-  isToday: boolean;
   lDay: number;
   lMonth: number;
   lYear: number;
@@ -255,16 +254,6 @@ const useCalendar = () => {
       i--;
     }
 
-    //是否今天
-    let isTodayObj = new Date(),
-      isToday = false;
-    if (
-      isTodayObj.getFullYear() === y &&
-      isTodayObj.getMonth() + 1 === m &&
-      isTodayObj.getDate() === d
-    ) {
-      isToday = true;
-    }
     //星期几
     let nWeek = objDate.getDay(),
       cWeek = nStr1[nWeek];
@@ -373,7 +362,6 @@ const useCalendar = () => {
       gzYear: gzY,
       gzMonth: gzM,
       gzDay: gzD,
-      isToday: isToday,
       isLeap: isLeap,
       nWeek: nWeek,
       ncWeek: '\u661f\u671f' + cWeek,

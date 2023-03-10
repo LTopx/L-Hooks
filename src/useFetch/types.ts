@@ -17,7 +17,7 @@ export interface FetchConfig {
   headers?: HeadersInit;
 }
 
-export interface FetchReturn {
+export interface FetchReturn<T> {
   /**
    * 请求状态：是否处于请求中
    */
@@ -26,7 +26,7 @@ export interface FetchReturn {
   /**
    * 执行请求
    */
-  run: (...params: any) => Promise<any>;
+  run: (...params: any) => Promise<T>;
 
   /**
    * 取消请求

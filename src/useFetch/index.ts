@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FetchConfig, FetchReturn } from './types';
 import { transformFetchOptions } from './utils';
 
-function useFetch<T = any>({ url, method, headers }: FetchConfig): FetchReturn {
+function useFetch<T = any>({ url, method, headers }: FetchConfig): FetchReturn<T> {
   const [loading, setLoading] = useState(false);
   const [controller, setController] = useState<AbortController>();
 

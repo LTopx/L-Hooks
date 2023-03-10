@@ -1,4 +1,6 @@
 ---
+nav: Hooks
+group: 基础
 order: 1
 toc: content
 ---
@@ -9,7 +11,7 @@ toc: content
 
 ## 代码演示
 
-### 基础用法
+#### 基础用法
 
 ```tsx
 /**
@@ -48,7 +50,7 @@ const {
 } = useClipboard();
 ```
 
-## Result
+### Result
 
 | 参数 | 说明     | 类型                            |
 | ---- | -------- | ------------------------------- |

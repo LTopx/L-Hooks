@@ -1,4 +1,6 @@
 ---
+nav: Hooks
+group: 基础
 order: 2
 toc: content
 ---
@@ -9,7 +11,7 @@ toc: content
 
 ## 代码演示
 
-### 基础用法
+#### 基础用法
 
 <code src="./demo/basic.tsx"></code>
 
@@ -22,20 +24,20 @@ interface LunarDateInfo {
   IMonthCn: string;
   Term: string | null;
   astro: string;
-  cDay: number;
-  cMonth: number;
   cYear: number;
+  cMonth: number;
+  cDay: number;
   date: string;
   festival: string;
-  gzDay: string;
-  gzMonth: string;
   gzYear: string;
+  gzMonth: string;
+  gzDay: string;
   isLeap: boolean;
   isTerm: boolean;
   isToday: boolean;
-  lDay: number;
-  lMonth: number;
   lYear: number;
+  lMonth: number;
+  lDay: number;
   lunarDate: string;
   lunarFestival: string | null;
   nWeek: number;
@@ -48,13 +50,27 @@ const result: LunarDateInfo = solar2lunar(new Date());
 
 ### Result
 
-| 属性          | 描述                                   | 类型                                                                                           |
-| ------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| online        | 网络是否为在线                         | `boolean`                                                                                      |
-| since         | `online` 最后改变时间                  | `Date`                                                                                         |
-| rtt           | 当前连接下评估的往返时延               | `number`                                                                                       |
-| type          | 设备使用与所述网络进行通信的连接的类型 | `bluetooth` \| `cellular` \| `ethernet` \| `none` \| `wifi` \| `wimax` \| `other` \| `unknown` |
-| downlink      | 有效带宽估算（单位：兆比特/秒）        | `number`                                                                                       |
-| downlinkMax   | 最大下行速度（单位：兆比特/秒）        | `number`                                                                                       |
-| saveData      | 用户代理是否设置了减少数据使用的选项   | `boolean`                                                                                      |
-| effectiveType | 网络连接的类型                         | `slow-2g` \| `2g` \| `3g` \| `4g`                                                              |
+| 属性          | 描述                                             | 类型      |
+| ------------- | ------------------------------------------------ | --------- |
+| Animal        | 生肖。(仅能大致转换，精确划分生肖分界线是“立春”) | `string`  |
+| IDayCn        | 农历日期                                         | `string`  |
+| IMonthCn      | 农历月份                                         | `string`  |
+| Term          | 24 节气                                          | `string`  |
+| astro         | 星座                                             | `string`  |
+| cYear         | 阳历年份                                         | `number`  |
+| cMonth        | 阳历月份                                         | `number`  |
+| cDay          | 阳历日期                                         | `number`  |
+| date          | 阳历年月日                                       | `string`  |
+| festival      | 阳历节日                                         | `string`  |
+| gzYear        | 干支纪年-年                                      | `string`  |
+| gzMonth       | 干支纪年-月                                      | `string`  |
+| gzDay         | 干支纪年-日                                      | `string`  |
+| isLeap        | 是否为闰月                                       | `boolean` |
+| isTerm        | 是否为 24 节气                                   | `boolean` |
+| lYear         | 农历年份                                         | `number`  |
+| lMonth        | 农历月份                                         | `number`  |
+| lDay          | 农历日期                                         | `number`  |
+| lunarDate     | 农历年月日                                       | `string`  |
+| lunarFestival | 农历节日                                         | `string`  |
+| nWeek         | 星期几-数字格式                                  | `number`  |
+| ncWeek        | 星期几-中文格式                                  | `string`  |
