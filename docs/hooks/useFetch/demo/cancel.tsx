@@ -2,7 +2,7 @@
  * title: 取消响应
  * description: 通过`cancel()`方法调用来发起请求获取数据
  */
-import { Button, List, Space } from 'antd';
+import { Button, List, message, Space } from 'antd';
 import { useFetch } from 'l-hooks';
 import React, { useState } from 'react';
 
@@ -20,13 +20,18 @@ export default () => {
     setData(data.slice(0, 5));
   };
 
+  const cancelFetch = () => {
+    cancel();
+    message.success({ content: '请求已取消', key: 'cancelFetch' });
+  };
+
   return (
     <Space direction="vertical" style={{ width: '100%' }}>
       <Space>
         <Button type="primary" loading={loading} onClick={getData}>
           点击获取数据
         </Button>
-        <Button onClick={cancel}>取消</Button>
+        <Button onClick={cancelFetch}>取消</Button>
       </Space>
 
       <List

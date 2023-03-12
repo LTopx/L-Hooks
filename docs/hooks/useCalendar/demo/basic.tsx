@@ -12,7 +12,6 @@ export default () => {
   const [data, setData] = useState('');
 
   const getData = () => {
-    console.log(solar2lunar(new Date()), 'xx');
     setData(JSON.stringify(solar2lunar(new Date())));
   };
 

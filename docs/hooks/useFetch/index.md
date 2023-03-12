@@ -48,5 +48,5 @@ const {
 | 参数    | 说明         | 类型                 | 默认值 |
 | ------- | ------------ | -------------------- | ------ |
 | url     | 请求地址 url | `string`             | -      |
-| method  | 请求 method  | `FetchRequestMethod` | GET    |
-| headers | 请求 headers | `HeadersInit`        | -      |
+| method  | 请求 Method  | `FetchRequestMethod` | GET    |
+| headers | 请求 Headers | `HeadersInit`        | -      |

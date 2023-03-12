@@ -7,7 +7,7 @@ toc: content
 
 # useClipboard
 
-复制文本
+复制文本。
 
 ## 代码演示
 

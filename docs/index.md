@@ -1,7 +1,7 @@
 ---
 hero:
   title: L-Hooks
-  description: 一个用起来能够解决一些问题的hooks
+  description: 一个能够解决一些问题的React Hooks
   actions:
     - text: 开始
       link: /hooks
