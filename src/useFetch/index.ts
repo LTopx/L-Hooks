@@ -17,6 +17,7 @@ function useFetch<T = any>({ url, method, headers }: FetchConfig): FetchReturn<T
       setLoading(true);
       fetch(fetchURL, { ...fetchConfig, signal })
         .then((response) => {
+          if (!response.ok) return reject(response);
           if (response.headers.get('content-type')?.includes('/json')) return response.json();
           return response.text();
         })

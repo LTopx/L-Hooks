@@ -13,22 +13,22 @@ toc: content
 
 🎉🎉 看心情 🎉🎉
 
-## 0.0.19
+## 0.0.22
 
-`2023-03-13`
+`2023-03-14`
 
-### Changed
+### Fixed
 
-- 完善 useDateFormat 文档，添加“星期”文档注释
-
-## 0.0.18
-
-`2023-03-12`
+- 修复 useFetch 在部分错误码依旧可以 resolve 的情况，改为通过 response.ok 判断
 
 ### Add
 
 - 新增 useNow，可快速获取当前时间
 - 新增 useDateFormat，可按照指定格式快速格式化时间
+
+### Changed
+
+- 完善 useDateFormat 文档，添加“星期”文档注释
 
 ## 0.0.14
 
