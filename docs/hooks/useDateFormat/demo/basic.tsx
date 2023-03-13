@@ -8,7 +8,7 @@ import React from 'react';
 
 export default () => {
   const now = useNow();
-  const formatted = useDateFormat(now, 'YYYY-MM-DD hh:mm:ss');
+  const formatted = useDateFormat(now, 'YYYY-MM-DD hh:mm:ss dddd');
 
   return <>{formatted}</>;
 };
