@@ -1,6 +1,6 @@
 {
   "name": "l-hooks",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A react hooks library developed with dumi",
   "keywords": [
     "react",
@@ -39,7 +39,7 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "pub:doc": "dumi build && gh-pages -d dist",
+    "pub:docs": "dumi build && gh-pages -d dist",
     "pub:hooks": "npm publish"
   },
   "commitlint": {
@@ -65,23 +65,23 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.21.0"
+    "@babel/runtime": "7.21.0"
   },
   "devDependencies": {
-    "@babel/core": "7.21.0",
+    "@babel/core": "7.21.3",
     "@commitlint/cli": "17.4.4",
     "@commitlint/config-conventional": "17.4.4",
     "@types/qs": "6.9.7",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "@umijs/lint": "4.0.57",
-    "antd": "5.3.0",
+    "@umijs/lint": "4.0.59",
+    "antd": "5.3.1",
     "dumi": "2.1.15",
     "eslint": "8.36.0",
     "father": "4.1.6",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
-    "l-hooks": "0.0.18",
+    "l-hooks": "0.0.23",
     "lint-staged": "13.2.0",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
@@ -91,7 +91,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
-    "styled-components": "5.3.8",
+    "styled-components": "5.3.9",
     "stylelint": "15.2.0",
     "typescript": "4.9.5",
     "webpack": "5.75.0"
