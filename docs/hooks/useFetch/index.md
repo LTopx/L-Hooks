@@ -21,6 +21,10 @@ toc: content
 
 <code src="./demo/cancel.tsx"></code>
 
+#### 处理 stream 流数据
+
+<code src="./demo/stream.tsx"></code>
+
 ## API
 
 ```typescript
@@ -32,6 +36,7 @@ const {
     url: string,
     method: FetchRequestMethod,
     headers?: HeadersInit,
+    pumb?: (reader: ReadableStreamDefaultReader<Uint8Array>) => void,
 });
 ```
 
@@ -45,8 +50,9 @@ const {
 
 ### Options
 
-| 参数    | 说明         | 类型                 | 默认值 |
-| ------- | ------------ | -------------------- | ------ |
-| url     | 请求地址 url | `string`             | -      |
-| method  | 请求 Method  | `FetchRequestMethod` | GET    |
-| headers | 请求 Headers | `HeadersInit`        | -      |
+| 参数    | 说明           | 类型                                                        | 默认值 |
+| ------- | -------------- | ----------------------------------------------------------- | ------ |
+| url     | 请求地址 url   | `string`                                                    | -      |
+| method  | 请求 Method    | `FetchRequestMethod`                                        | GET    |
+| headers | 请求 Headers   | `HeadersInit`                                               | -      |
+| pumb    | 流数据处理方法 | `(reader: ReadableStreamDefaultReader<Uint8Array>) => void` | -      |

@@ -15,6 +15,11 @@ export interface FetchConfig {
    * 请求headers：无默认值
    */
   headers?: HeadersInit;
+
+  /**
+   * 支持流数据处理
+   */
+  pumb?: (reader: ReadableStreamDefaultReader<Uint8Array>) => void;
 }
 
 export interface FetchReturn<T> {

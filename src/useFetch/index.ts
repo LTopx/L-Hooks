@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FetchConfig, FetchReturn } from './types';
 import { transformFetchOptions } from './utils';
 
-function useFetch<T = any>({ url, method, headers }: FetchConfig): FetchReturn<T> {
+function useFetch<T = any>({ url, method, headers, pumb }: FetchConfig): FetchReturn<T> {
   const [loading, setLoading] = useState(false);
   const [controller, setController] = useState<AbortController>();
 
@@ -18,6 +18,7 @@ function useFetch<T = any>({ url, method, headers }: FetchConfig): FetchReturn<T
       fetch(fetchURL, { ...fetchConfig, signal })
         .then((response) => {
           if (!response.ok) return reject(response);
+          if (pumb && response.body) return pumb(response.body.getReader());
           if (response.headers.get('content-type')?.includes('/json')) return response.json();
           return response.text();
         })
