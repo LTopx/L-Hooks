@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import * as React from 'react';
 
 export interface UseNowOptions<Controls extends boolean> {
   /**
@@ -15,41 +15,30 @@ export function useNow(options: UseNowOptions<true>): {
 };
 export function useNow(options: UseNowOptions<boolean> = {}) {
   const { controls = false } = options;
-  const [nowTime, setNowTime] = useState<Date>();
-  const [timer, setTimer] = useState<NodeJS.Timer>();
-
-  // 开始运行
-  const startTimer = () => {
-    setNowTime(new Date());
-    const interval = setInterval(() => {
-      setNowTime(new Date());
-    }, 1000);
-    setTimer(interval);
-  };
+  const [nowTime, setNowTime] = React.useState<Date>(new Date());
+  const timerRef = React.useRef<NodeJS.Timer | null>(null);
 
   // 暂停timer
-  const pause = () => {
-    if (!timer) return;
-    clearInterval(timer);
-    setTimer(undefined);
-  };
-
-  // 继续timer
-  const resume = () => {
-    if (timer) return;
-    startTimer();
-  };
-
-  useEffect(() => {
-    startTimer();
+  const pause = React.useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
   }, []);
 
-  // 退出时清除timer
-  useEffect(() => {
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [timer]);
+  // 开始运行、继续timer
+  const resume = React.useCallback(() => {
+    if (timerRef.current) return;
+    timerRef.current = setInterval(() => {
+      setNowTime(new Date());
+    }, 1000);
+  }, []);
+
+  React.useEffect(() => {
+    resume();
+
+    return pause;
+  }, []);
 
   if (controls) return { time: nowTime, pause, resume };
 

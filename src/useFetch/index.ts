@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import * as React from 'react';
 import type { FetchConfig, FetchReturn } from './types';
 import { transformFetchOptions } from './utils';
 
 function useFetch<T = any>({ url, method, headers, pumb }: FetchConfig): FetchReturn<T> {
-  const [loading, setLoading] = useState(false);
-  const [controller, setController] = useState<AbortController>();
+  const [loading, setLoading] = React.useState(false);
+  const controllerRef = React.useRef<AbortController>();
 
   const run = (data: any = {}) => {
     const abortController = new AbortController();
     const { signal } = abortController;
-    setController(abortController);
+    controllerRef.current = abortController;
 
     const { fetchURL, fetchConfig } = transformFetchOptions({ url, method, headers, data });
 
@@ -30,12 +30,12 @@ function useFetch<T = any>({ url, method, headers, pumb }: FetchConfig): FetchRe
         })
         .finally(() => {
           setLoading(false);
-          setController(undefined);
+          controllerRef.current = undefined;
         });
     });
   };
 
-  const cancel = () => controller?.abort();
+  const cancel = React.useCallback(() => controllerRef.current?.abort(), []);
 
   return { loading, run, cancel };
 }

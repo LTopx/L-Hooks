@@ -1,6 +1,6 @@
 {
   "name": "l-hooks",
-  "version": "0.0.25",
+  "version": "0.0.29",
   "description": "A react hooks library developed with dumi",
   "keywords": [
     "react",
@@ -68,7 +68,6 @@
     "@babel/runtime": "7.21.0"
   },
   "devDependencies": {
-    "@ant-design/icons": "^5.0.1",
     "@babel/core": "7.21.3",
     "@commitlint/cli": "17.5.0",
     "@commitlint/config-conventional": "17.4.4",
@@ -78,6 +77,7 @@
     "@umijs/lint": "4.0.62",
     "antd": "5.3.2",
     "dumi": "2.1.17",
+    "dumi-theme-antd-style": "0.19.4",
     "eslint": "8.36.0",
     "father": "4.1.7",
     "gh-pages": "5.0.0",

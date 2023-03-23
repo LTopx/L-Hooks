@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 import { isNumber } from '../utils';
 import type { UseIntervalOptions, UseIntervalReturn } from './types';
 
@@ -7,19 +7,19 @@ const useInterval = (
   interval: number = 0,
   options: UseIntervalOptions = { immediate: false }
 ): UseIntervalReturn => {
-  const timerCallback = useRef(fn);
-  timerCallback.current = useMemo(() => fn, [fn]);
+  const timerCallback = React.useRef(fn);
+  timerCallback.current = React.useMemo(() => fn, [fn]);
 
-  const timerRef = useRef<NodeJS.Timer | null>(null);
+  const timerRef = React.useRef<NodeJS.Timer | null>(null);
 
   // 清除定时器
-  const clear = () => {
+  const clear = React.useCallback(() => {
     if (!timerRef.current) return;
     clearInterval(timerRef.current);
     timerRef.current = null;
-  };
+  }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isNumber(interval) || interval < 0) return;
 
     if (options.immediate) timerCallback.current();

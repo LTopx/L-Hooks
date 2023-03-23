@@ -1,21 +1,21 @@
-import { useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 import { isNumber } from '../utils';
 import type { UseTimeoutReturn } from './types';
 
 const useTimeout = (fn: () => void, timeout: number = 0): UseTimeoutReturn => {
-  const timerCallback = useRef(fn);
-  timerCallback.current = useMemo(() => fn, [fn]);
+  const timerCallback = React.useRef(fn);
+  timerCallback.current = React.useMemo(() => fn, [fn]);
 
-  const timerRef = useRef<NodeJS.Timer | null>(null);
+  const timerRef = React.useRef<NodeJS.Timer | null>(null);
 
   // 清除定时器
-  const clear = () => {
+  const clear = React.useCallback(() => {
     if (!timerRef.current) return;
     clearTimeout(timerRef.current);
     timerRef.current = null;
-  };
+  }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isNumber(timeout) || timeout < 0) return;
 
     timerRef.current = setTimeout(timerCallback.current, timeout);
