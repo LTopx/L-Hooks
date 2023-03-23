@@ -19,9 +19,9 @@ toc: content
 
 <code src="./demo/locales.tsx"></code>
 
-#### 可控制
+#### 手动调用
 
-<code src="./demo/controls.tsx"></code>
+<code src="./demo/manual.tsx"></code>
 
 ## API
 
@@ -29,14 +29,15 @@ toc: content
 const time = useDateFormat(
   date: DateLike,
   formatStr?: string,
-  options?: UseDateFormatOptions<false>
+  options?: UseDateFormatOptions
 );
 
-const { format } = useDateFormat(
+const { format } = useDateFormat();
+format(
   date: DateLike,
   formatStr?: string,
-  options?: UseDateFormatOptions<true>
-);
+  options?: UseDateFormatOptions
+)
 ```
 
 ### Result
@@ -56,16 +57,15 @@ const { format } = useDateFormat(
 
 ### Options
 
-| 属性     | 描述                                               | 类型                   | 默认值          |
-| -------- | -------------------------------------------------- | ---------------------- | --------------- |
-| locales  | 一种语言或者区域标记，传入后按照该语言和区域格式化 | `Intl.LocalesArgument` | 当地默认 locale |
-| controls | 是否可以手动调用，来获取格式化时间结果             | `boolean`              | `false`         |
+| 属性    | 描述                                               | 类型                   | 默认值          |
+| ------- | -------------------------------------------------- | ---------------------- | --------------- |
+| locales | 一种语言或者区域标记，传入后按照该语言和区域格式化 | `Intl.LocalesArgument` | 当地默认 locale |
 
 ### Actions
 
-| 属性   | 描述                   | 类型           |
-| ------ | ---------------------- | -------------- |
-| format | 手动调用获取格式化结果 | `() => string` |
+| 属性   | 描述                   | 类型                                                                             |
+| ------ | ---------------------- | -------------------------------------------------------------------------------- |
+| format | 手动调用获取格式化结果 | `(date: DateLike, formatStr?: string, options?: UseDateFormatOptions) => string` |
 
 ### Formats
 
