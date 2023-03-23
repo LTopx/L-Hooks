@@ -19,29 +19,53 @@ toc: content
 
 <code src="./demo/locales.tsx"></code>
 
+#### 可控制
+
+<code src="./demo/controls.tsx"></code>
+
 ## API
 
 ```typescript
 const time = useDateFormat(
   date: DateLike,
   formatStr?: string,
-  options?: UseDateFormatOptions
+  options?: UseDateFormatOptions<false>
+);
+
+const { format } = useDateFormat(
+  date: DateLike,
+  formatStr?: string,
+  options?: UseDateFormatOptions<true>
 );
 ```
 
+### Result
+
+| 属性    | 描述           | 类型      |
+| ------- | -------------- | --------- |
+| time    | 格式化时间     | `string`  |
+| Actions | 手动格式化操作 | `Actions` |
+
 ### Params
 
-| 属性      | 描述                                              | 类型                   | 默认值   |
-| --------- | ------------------------------------------------- | ---------------------- | -------- |
-| date      | 需要格式化的日期 / 类日期                         | `DateLike`             | -        |
-| formatStr | 格式化模板                                        | `string`               | HH:mm:ss |
-| options   | 额外配置，目前支持传入 locales 按语言和区域格式化 | `UseDateFormatOptions` | -        |
+| 属性      | 描述                      | 类型                   | 默认值   |
+| --------- | ------------------------- | ---------------------- | -------- |
+| date      | 需要格式化的日期 / 类日期 | `DateLike`             | -        |
+| formatStr | 格式化模板                | `string`               | HH:mm:ss |
+| options   | 额外配置                  | `UseDateFormatOptions` | -        |
 
 ### Options
 
-| 属性    | 描述                             | 类型                   | 默认值          |
-| ------- | -------------------------------- | ---------------------- | --------------- |
-| locales | 代表了一种语言或者区域的语言标记 | `Intl.LocalesArgument` | 当地默认 locale |
+| 属性     | 描述                                               | 类型                   | 默认值          |
+| -------- | -------------------------------------------------- | ---------------------- | --------------- |
+| locales  | 一种语言或者区域标记，传入后按照该语言和区域格式化 | `Intl.LocalesArgument` | 当地默认 locale |
+| controls | 是否可以手动调用，来获取格式化时间结果             | `boolean`              | `false`         |
+
+### Actions
+
+| 属性   | 描述                   | 类型           |
+| ------ | ---------------------- | -------------- |
+| format | 手动调用获取格式化结果 | `() => string` |
 
 ### Formats
 

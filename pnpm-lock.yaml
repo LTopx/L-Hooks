@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ant-design/icons': ^5.0.1
   '@babel/core': 7.21.3
   '@babel/runtime': 7.21.0
   '@commitlint/cli': 17.5.0
@@ -12,12 +11,12 @@ specifiers:
   '@umijs/lint': 4.0.62
   antd: 5.3.2
   dumi: 2.1.17
-  dumi-theme-antd-style: ^0.19.4
+  dumi-theme-antd-style: 0.19.4
   eslint: 8.36.0
   father: 4.1.7
   gh-pages: 5.0.0
   husky: 8.0.3
-  l-hooks: 0.0.25
+  l-hooks: 0.0.32
   lint-staged: 13.2.0
   postcss: 8.4.21
   prettier: 2.8.6
@@ -36,7 +35,6 @@ dependencies:
   '@babel/runtime': 7.21.0
 
 devDependencies:
-  '@ant-design/icons': 5.0.1_biqbaboplfbrettd7655fr4n2y
   '@babel/core': 7.21.3
   '@commitlint/cli': 17.5.0
   '@commitlint/config-conventional': 17.4.4
@@ -46,12 +44,12 @@ devDependencies:
   '@umijs/lint': 4.0.62_3mgmg3xodj5xnpwdofx4fhikfa
   antd: 5.3.2_biqbaboplfbrettd7655fr4n2y
   dumi: 2.1.17_2edzot7zuhod35ud2w3t7ykwru
-  dumi-theme-antd-style: 0.19.4_qqaianuwgc76vf3wgjjomquyrm
+  dumi-theme-antd-style: 0.19.4_zeqawrkzwt4ahscwqiwkkkpgfm
   eslint: 8.36.0
   father: 4.1.7_h5ciuwjgj7bsxzstrtyf56ld7i
   gh-pages: 5.0.0
   husky: 8.0.3
-  l-hooks: 0.0.25_dgg5gja2vyp5m2c4smsanxdiai
+  l-hooks: 0.0.32_dgg5gja2vyp5m2c4smsanxdiai
   lint-staged: 13.2.0
   postcss: 8.4.21
   prettier: 2.8.6
@@ -5096,7 +5094,7 @@ packages:
     resolution: {integrity: sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==}
     dev: true
 
-  /dumi-theme-antd-style/0.19.4_qqaianuwgc76vf3wgjjomquyrm:
+  /dumi-theme-antd-style/0.19.4_zeqawrkzwt4ahscwqiwkkkpgfm:
     resolution: {integrity: sha512-GKK/+ikGWblvtEzXWIMQSOTHHUWVoqqahrMlAA6W2Iiy+HhXM8kzkiaJVAEYlgyfQCTM/WkBr42Lfbp4W8t2ow==}
     peerDependencies:
       '@ant-design/icons': '>=4'
@@ -5105,7 +5103,6 @@ packages:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
-      '@ant-design/icons': 5.0.1_biqbaboplfbrettd7655fr4n2y
       '@babel/runtime': 7.21.0
       '@emotion/css': 11.10.6
       '@emotion/server': 11.10.0_@emotion+css@11.10.6
@@ -7763,8 +7760,8 @@ packages:
     resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
     dev: true
 
-  /l-hooks/0.0.25_dgg5gja2vyp5m2c4smsanxdiai:
-    resolution: {integrity: sha512-u+um6uQxbd/2AtRj7O03qLwzNCrtd9/mAjB+nIkFxO3qjYxljgtKhJA+TkZ71SZvKGILNI6UxBTd9aqqF/9VJg==}
+  /l-hooks/0.0.32_dgg5gja2vyp5m2c4smsanxdiai:
+    resolution: {integrity: sha512-MqmaqExHvXriQQXKVvFCTq19HgEJ8MqMe/xwTAu9Yn+BEH3Lh7emLuECfiooOJ5ihz7o6Xy3J7t3EpxB8KDUTw==}
     peerDependencies:
       '@types/qs': '>=6.9.7'
       qs: '>=6.11.1'

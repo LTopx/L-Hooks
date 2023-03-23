@@ -1,6 +1,6 @@
 import useCalendar from './useCalendar';
 import useClipboard from './useClipboard';
-import useDateFormat from './useDateFormat';
+import { useDateFormat } from './useDateFormat';
 import useFetch from './useFetch';
 import useInterval from './useInterval';
 import { useNow } from './useNow';

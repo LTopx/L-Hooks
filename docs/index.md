@@ -1,12 +1,7 @@
 ---
 hero:
   title: L-Hooks
-  description: 一个能够解决一些问题的React Hooks
-  actions:
-    - text: 开始
-      link: /hooks
-    - text: Github
-      link: https://github.com/Peek-A-Booo/LHooks
+  description: 一个还可以的React Hooks，希望能增加你摸鱼的时间👀
 ---
 
 ## ✨ 特性
