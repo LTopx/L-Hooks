@@ -7,9 +7,7 @@ function useFetch<T>({ url, method, headers, beforeFetch, pumb }: FetchConfig): 
   const controllerRef = React.useRef<AbortController>();
 
   const run = async (data: any = {}) => {
-    const abortController = new AbortController();
-    const { signal } = abortController;
-    controllerRef.current = abortController;
+    controllerRef.current = new AbortController();
 
     let { fetchURL, fetchConfig } = transformFetchOptions({ url, method, headers, data });
 
@@ -18,15 +16,11 @@ function useFetch<T>({ url, method, headers, beforeFetch, pumb }: FetchConfig): 
       ...fetchConfig,
     };
 
-    try {
-      if (beforeFetch) {
-        Object.assign(context, await beforeFetch({ url: fetchURL, ...fetchConfig }));
-      }
-    } catch {}
+    if (beforeFetch) Object.assign(context, await beforeFetch({ url: fetchURL, ...fetchConfig }));
 
     return new Promise<T>((resolve, reject) => {
       setLoading(true);
-      fetch(context.url, { ...fetchConfig, signal })
+      fetch(context.url, { ...fetchConfig, signal: controllerRef.current?.signal })
         .then(async (response) => {
           if (!response.ok) return reject(response);
           if (pumb && response.body) return pumb(response.body.getReader());

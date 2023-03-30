@@ -13,13 +13,15 @@ toc: content
 
 🎉🎉 看心情 🎉🎉
 
-## 0.0.36
+## 0.0.38
 
 `2023-03-30`
 
 ### Add
 
 - useFetch 新增 beforeFetch 方法支持在请求前对请求配置和参数进行处理
+- 新增 useLocalState，可将状态与 localstorage 结合进行持久化管理
+- 新增 useUpdate,可以强制重新渲染当前页面
 
 ## 0.0.35
 

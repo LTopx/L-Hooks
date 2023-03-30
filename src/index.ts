@@ -1,15 +1,16 @@
-import useCalendar from './useCalendar';
-import useClipboard from './useClipboard';
-import { useDateFormat } from './useDateFormat';
-import useFetch from './useFetch';
-import useInterval from './useInterval';
-import { useNow } from './useNow';
-import useTimeout from './useTimeout';
-
+export { default as useCalendar } from './useCalendar';
 export type { LunarDateInfo } from './useCalendar';
+export { default as useClipboard } from './useClipboard';
+export { useDateFormat } from './useDateFormat';
 export type { UseDateFormatOptions } from './useDateFormat/types';
+export { default as useFetch } from './useFetch';
 export type { BeforeFetchContext, FetchConfig, FetchRequestMethod } from './useFetch/types';
+export { default as useInterval } from './useInterval';
 export type { UseIntervalOptions, UseIntervalReturn } from './useInterval/types';
+export { createLocalStore, useLocalState } from './useLocalState';
+export type { LocalStateReturn } from './useLocalState';
+export { useNow } from './useNow';
 export type { UseNowOptions } from './useNow';
+export { default as useTimeout } from './useTimeout';
 export type { UseTimeoutReturn } from './useTimeout/types';
-export { useFetch, useClipboard, useCalendar, useNow, useDateFormat, useTimeout, useInterval };
+export { useUpdate } from './useUpdate';
