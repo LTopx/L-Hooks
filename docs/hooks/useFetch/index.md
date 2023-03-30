@@ -25,6 +25,10 @@ toc: content
 
 <code src="./demo/stream.tsx"></code>
 
+#### 拦截器
+
+<code src="./demo/interceptors.tsx"></code>
+
 ## API
 
 ```typescript
@@ -37,6 +41,7 @@ const {
     method: FetchRequestMethod,
     headers?: HeadersInit,
     pumb?: (reader: ReadableStreamDefaultReader<Uint8Array>) => void,
+    beforeFetch?: (ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext>>;
 });
 ```
 
@@ -50,9 +55,10 @@ const {
 
 ### Options
 
-| 参数    | 说明           | 类型                                                        | 默认值 |
-| ------- | -------------- | ----------------------------------------------------------- | ------ |
-| url     | 请求地址 url   | `string`                                                    | -      |
-| method  | 请求 Method    | `FetchRequestMethod`                                        | GET    |
-| headers | 请求 Headers   | `HeadersInit`                                               | -      |
-| pumb    | 流数据处理方法 | `(reader: ReadableStreamDefaultReader<Uint8Array>) => void` | -      |
+| 参数        | 说明                 | 类型                                                                | 默认值 |
+| ----------- | -------------------- | ------------------------------------------------------------------- | ------ |
+| url         | 请求地址 url         | `string`                                                            | -      |
+| method      | 请求 Method          | `FetchRequestMethod`                                                | GET    |
+| headers     | 请求 Headers         | `HeadersInit`                                                       | -      |
+| pumb        | 流数据处理方法       | `(reader: ReadableStreamDefaultReader<Uint8Array>) => void`         | -      |
+| beforeFetch | 请求前处理配置和参数 | `(ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext>>` | -      |

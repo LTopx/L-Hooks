@@ -8,11 +8,24 @@ interface transformOptions {
   data: any;
 }
 
-export const transformFetchOptions = ({ url, method, headers, data }: transformOptions) => {
-  const baseURL = '';
-  let fetchURL = baseURL + url;
-  let fetchConfig: RequestInit = { method };
-  if (headers) fetchConfig = { ...fetchConfig, headers };
+interface FetchConfig extends RequestInit {
+  headers: HeadersInit;
+}
+
+export const transformFetchOptions = ({
+  url,
+  method,
+  headers: customHeaders,
+  data,
+}: transformOptions) => {
+  /** 构造请求头 */
+  const fetchHeaders: HeadersInit = {};
+  try {
+    if (customHeaders) Object.assign(fetchHeaders, customHeaders);
+  } catch {}
+
+  let fetchURL = url;
+  let fetchConfig: FetchConfig = { method, headers: fetchHeaders };
 
   if (method?.toUpperCase() === 'GET') {
     if (Object.entries(data).length) fetchURL = `${fetchURL}?${Qs.stringify(data)}`;
