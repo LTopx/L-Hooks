@@ -58,8 +58,8 @@ devDependencies:
     specifier: 8.0.3
     version: 8.0.3
   l-hooks:
-    specifier: 0.0.38
-    version: 0.0.38(@types/qs@6.9.7)(qs@6.11.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.0.41
+    version: 0.0.41(@types/qs@6.9.7)(qs@6.11.1)(react-dom@18.2.0)(react@18.2.0)
   lint-staged:
     specifier: 13.2.0
     version: 13.2.0
@@ -7828,8 +7828,8 @@ packages:
     resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
     dev: true
 
-  /l-hooks@0.0.38(@types/qs@6.9.7)(qs@6.11.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-DceEsQC2VUYCv4fyZuYPqatU1oe9qLhJPz4rN60jWgwaJAGuXWDshHAZOo5eIm9JLDtMJYTcf1DH78syNxu1lQ==}
+  /l-hooks@0.0.41(@types/qs@6.9.7)(qs@6.11.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/8Q7ri8dmYtF5V7YfDnl9qMAjXyfKsQucsF0YS3wMdluSmpz17gDGqY+O/LGT+nLHapbalrzuQTUw036eYpOLQ==}
     peerDependencies:
       '@types/qs': '>=6.9.7'
       qs: '>=6.11.1'

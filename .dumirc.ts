@@ -11,7 +11,7 @@ export default defineConfig({
     github: 'https://github.com/Peek-A-Booo/LHooks',
     hero: {
       actions: [
-        { text: '开始使用', link: '/hooks' },
+        { text: '开始使用', link: '/LHooks/hooks' },
         { text: 'Github', link: 'https://github.com/Peek-A-Booo/LHooks' },
       ],
       features: [

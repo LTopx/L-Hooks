@@ -13,15 +13,20 @@ toc: content
 
 🎉🎉 看心情 🎉🎉
 
-## 0.0.38
+## 0.0.41
 
-`2023-03-30`
+`2023-03-31`
 
 ### Add
 
 - useFetch 新增 beforeFetch 方法支持在请求前对请求配置和参数进行处理
 - 新增 useLocalState，可将状态与 localstorage 结合进行持久化管理
 - 新增 useUpdate,可以强制重新渲染当前页面
+- 新增 useAtom，可原子化管理页面状态
+
+### Changed
+
+- 将 useLocalState 内部替换为 useAtom 实现
 
 ## 0.0.35
 

@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useUpdate } from '../useUpdate';
+import { useAtom } from '../useAtom';
 import { isUndef } from '../utils';
 
 export interface LocalStore<T> {
@@ -7,7 +6,29 @@ export interface LocalStore<T> {
   key: string;
 }
 
-export type LocalStateReturn<T> = [T, (value: T) => void];
+type LocalStoreReturn<T> = LocalStore<T> & { effectList: any };
+
+type SetStateAction<S> = S | ((prevState: S) => S);
+
+type Dispatch<A> = (value: A) => void;
+
+export type LocalStateReturn<T> = [T, Dispatch<SetStateAction<T>>];
+
+/**
+ * 创建本地原子状态
+ * @param value 原子状态的初始值
+ * @param localStorageKey 本地存储的key
+ */
+export function createLocalStore<T = unknown>(
+  value: T,
+  localStorageKey: string
+): LocalStoreReturn<T> {
+  return {
+    value,
+    key: localStorageKey,
+    effectList: new Set(),
+  };
+}
 
 function getLocalStorage<T>(key: string) {
   try {
@@ -30,52 +51,27 @@ const setLocalStorage = (key: string, value: any) => {
   }
 };
 
-/**
- * 创建本地原子状态
- * @param value 原子状态的初始值
- * @param localStorageKey 本地存储的key
- */
-function createLocalStore<T = unknown>(
-  value: T,
-  localStorageKey: string
-): LocalStore<T> & { effectList: any } {
-  return {
-    value,
-    key: localStorageKey,
-    effectList: new Set(),
-  };
-}
-
-/**
- * 关键点在于，每个页面调用useLocalState时，需要往当前store的effectList中添加一个可强制更新的函数：即setState
- */
-function useLocalState<T = unknown>(
-  store: LocalStore<T> & { effectList: any }
-): LocalStateReturn<T> {
-  const forceUpdate = useUpdate();
+export function useLocalState<T = unknown>(store: LocalStoreReturn<T>): LocalStateReturn<T> {
+  const [state, setState] = useAtom(store);
 
   const localStoreValue = getLocalStorage<T>(store.key);
-  const defaultStoreValue = store.value;
 
-  const setState = (newValue: T) => {
-    if (store.value === newValue) return;
-
-    store.value = newValue;
-    setLocalStorage(store.key, newValue);
+  const setLocalState = (value: T | ((prevState: T) => T)) => {
+    if (typeof value === 'function') {
+      const transformStoreValue: T = (value as any)(localStoreValue || state);
+      if (transformStoreValue === value) return;
+      setState(transformStoreValue);
+      setLocalStorage(store.key, transformStoreValue);
+    } else {
+      if (state === value) return;
+      setState(value);
+      setLocalStorage(store.key, value);
+    }
 
     store.effectList.forEach((effect: any) => {
       effect();
     });
   };
 
-  React.useEffect(() => {
-    store.effectList.add(forceUpdate);
-    return () => {
-      store.effectList.delete(forceUpdate);
-    };
-  });
-
-  return [localStoreValue || defaultStoreValue, setState];
+  return [localStoreValue || state, setLocalState];
 }
-
-export { useLocalState, createLocalStore };
