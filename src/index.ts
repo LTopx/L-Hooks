@@ -1,5 +1,5 @@
-export { createStore, useAtom } from './useAtom';
-export type { AtomReturn, Store } from './useAtom';
+export { createAtom, useAtom } from './useAtom';
+export type { Atom, UseAtomReturn } from './useAtom';
 export { default as useCalendar } from './useCalendar';
 export type { LunarDateInfo } from './useCalendar';
 export { default as useClipboard } from './useClipboard';
@@ -9,8 +9,8 @@ export { default as useFetch } from './useFetch';
 export type { BeforeFetchContext, FetchConfig, FetchRequestMethod } from './useFetch/types';
 export { default as useInterval } from './useInterval';
 export type { UseIntervalOptions, UseIntervalReturn } from './useInterval/types';
-export { createLocalStore, useLocalState } from './useLocalState';
-export type { LocalStateReturn, LocalStore } from './useLocalState';
+export { createLocalAtom, useLocalAtom } from './useLocalAtom';
+export type { LocalAtom, UseLocalAtomReturn } from './useLocalAtom';
 export { useNow } from './useNow';
 export type { UseNowOptions } from './useNow';
 export { default as useTimeout } from './useTimeout';

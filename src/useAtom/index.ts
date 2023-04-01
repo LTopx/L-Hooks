@@ -1,53 +1,66 @@
 import * as React from 'react';
 import { useUpdate } from '../useUpdate';
 
-export interface Store<T> {
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace AtomNameSpace {
+  export type Set<T> = globalThis.Set<T>;
+}
+
+type SetAtomAction<S> = S | ((prevAtom: S) => S);
+type Dispatch<A> = (value: A) => void;
+type CreateAtomReturn<T> = Atom<T> & { atomEffectList: AtomNameSpace.Set<() => void> };
+
+export interface Atom<T> {
   value: T;
 }
 
-type SetStateAction<S> = S | ((prevState: S) => S);
-
-type Dispatch<A> = (value: A) => void;
-
-export type AtomReturn<T> = [T, Dispatch<SetStateAction<T>>];
-
-type CreateStoreReturn<T> = Store<T> & { effectList: any };
+export type UseAtomReturn<T> = [T, Dispatch<SetAtomAction<T>>];
 
 /**
  * 创建原子状态
  * @param value 原子状态的初始值
  */
-export function createStore<T = unknown>(value: T): CreateStoreReturn<T> {
+export function createAtom<T = unknown>(value: T): CreateAtomReturn<T> {
   return {
     value,
-    effectList: new Set(),
+    atomEffectList: new Set(),
   };
 }
 
-export function useAtom<T = unknown>(store: CreateStoreReturn<T>): AtomReturn<T> {
+/**
+ * 使用原子状态
+ * @param atom 传入原子状态
+ * @returns [atom, setAtom] atom为原子状态的值，setAtom为设置原子状态的方法
+ */
+export function useAtom<T = unknown>(atom: CreateAtomReturn<T>): UseAtomReturn<T> {
   const forceUpdate = useUpdate();
 
-  const setState = (value: T | ((prevState: T) => T)) => {
-    if (typeof value === 'function') {
-      const transformStoreValue: T = (value as any)(store.value);
-      if (transformStoreValue === value) return;
-      store.value = transformStoreValue;
+  const setAtom = (args: SetAtomAction<T>) => {
+    const prevAtom = atom.value;
+    let nextAtom: T;
+
+    if (typeof args === 'function') {
+      nextAtom = (args as (prevAtom: T) => T)(prevAtom);
     } else {
-      if (store.value === value) return;
-      store.value = value;
+      nextAtom = args;
     }
 
-    store.effectList.forEach((effect: any) => {
+    // 如若相等，则无需更新原子状态的值，也无需通知其他组件re-render
+    if (prevAtom === nextAtom) return;
+
+    atom.value = nextAtom;
+    // 通知其他绑定了该原子状态的组件render
+    atom.atomEffectList.forEach((effect: any) => {
       effect();
     });
   };
 
   React.useEffect(() => {
-    store.effectList.add(forceUpdate);
+    atom.atomEffectList.add(forceUpdate);
     return () => {
-      store.effectList.delete(forceUpdate);
+      atom.atomEffectList.delete(forceUpdate);
     };
   });
 
-  return [store.value, setState];
+  return [atom.value, setAtom];
 }

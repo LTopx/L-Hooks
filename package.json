@@ -1,6 +1,6 @@
 {
   "name": "l-hooks",
-  "version": "0.0.41",
+  "version": "0.1.1",
   "description": "A react hooks library developed with dumi",
   "keywords": [
     "react",
@@ -85,7 +85,7 @@
     "father": "4.1.7",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
-    "l-hooks": "0.0.41",
+    "l-hooks": "0.0.48",
     "lint-staged": "13.2.0",
     "postcss": "8.4.21",
     "prettier": "2.8.7",

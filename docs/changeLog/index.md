@@ -13,6 +13,20 @@ toc: content
 
 🎉🎉 看心情 🎉🎉
 
+## 0.1.0
+
+`2023-04-01`
+
+### Changed
+
+- 调整 atom hooks 的名称，统一内部代码实现结构
+
+## 0.0.45
+
+### Fixed
+
+- 修复 useLocalState 采用(prevState: T) => T 更新时读取 localstorage 值一直为初始记录值的问题
+
 ## 0.0.41
 
 `2023-03-31`

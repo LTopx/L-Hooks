@@ -24,9 +24,9 @@ toc: content
 ## API
 
 ```typescript
-// 创建store
-const store: Store<T> = createStore<T = unknown>(value: T);
+// 创建atom
+const atom: Atom<T> = createAtom<T = unknown>(value: T);
 
-// 管理状态
-const [state, setState] = useAtom<T = unknown>(store: Store<T>)
+// 管理使用Atom
+const [state, setState] = useAtom<T = unknown>(atom: Atom<T>)
 ```

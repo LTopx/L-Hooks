@@ -7,7 +7,7 @@ order: 1
 toc: content
 ---
 
-# useLocalState
+# useLocalAtom
 
 一个看起来和用起来都跟 useState 差不多的 Hook。结合了 localstorage 可以方便的进行状态管理的持久化管理。
 
@@ -24,9 +24,9 @@ toc: content
 ## API
 
 ```typescript
-// 创建store
-const store: LocalStore<T> = createLocalStore<T = unknown>(value: T, localStorageKey: string);
+// 创建localAtom
+const localAtom: LocalAtom<T> = createLocalAtom<T = unknown>(value: T, localStorageKey: string);
 
-// 管理状态
-const [state, setState] = useLocalState<T = unknown>(store: LocalStore<T>)
+// 管理使用localAtom
+const [state, setState] = useLocalAtom<T = unknown>(localAtom: LocalAtom<T>)
 ```

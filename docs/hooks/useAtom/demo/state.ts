@@ -1,5 +1,5 @@
-import { createStore } from 'l-hooks';
+import { createAtom } from 'l-hooks';
 
-const myState = createStore<number>(0);
+const myAtom = createAtom<number>(0);
 
-export { myState };
+export { myAtom };
