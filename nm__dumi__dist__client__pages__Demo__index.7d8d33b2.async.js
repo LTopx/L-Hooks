@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkl_hooks=self.webpackChunkl_hooks||[]).push([[9],{82851:function(l,n,e){e.r(n),e.d(n,{default:function(){return s}});var o=e(54305),t=e(50959),r=function(){var u=(0,o.UO)(),d=u.id,m=(0,o.WF)(),c=m.demos,f=c[d]||{},a=f.component;return a&&(0,t.createElement)(a)},s=r}}]);
