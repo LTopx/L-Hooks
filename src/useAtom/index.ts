@@ -46,7 +46,10 @@ export function useAtom<T = unknown>(atom: CreateAtomReturn<T>): UseAtomReturn<T
     }
 
     // 如若相等，则无需更新原子状态的值，也无需通知其他组件re-render
-    if (prevAtom === nextAtom) return;
+    // fix: 只有当前值和后值都不为引用类型时才进行全等比较，否则直接赋值即可
+    if (typeof prevAtom !== 'object' && typeof nextAtom !== 'object' && prevAtom === nextAtom) {
+      return;
+    }
 
     atom.value = nextAtom;
     // 通知其他绑定了该原子状态的组件render

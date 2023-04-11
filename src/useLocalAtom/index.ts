@@ -74,7 +74,14 @@ export function useLocalAtom<T = unknown>(
       nextLocalAtom = args;
     }
 
-    if (prevLocalAtom === nextLocalAtom) return;
+    // fix: 只有当前值和后值都不为引用类型时才进行全等比较，否则直接赋值即可
+    if (
+      typeof prevLocalAtom !== 'object' &&
+      typeof nextLocalAtom !== 'object' &&
+      prevLocalAtom === nextLocalAtom
+    ) {
+      return;
+    }
 
     setState(nextLocalAtom);
     setLocalStorage(localAtom.key, nextLocalAtom);

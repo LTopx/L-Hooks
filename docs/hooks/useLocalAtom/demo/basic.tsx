@@ -11,12 +11,14 @@ export default () => {
   const [state, setState] = useLocalAtom(myAtom);
 
   const handleChange = () => {
+    const xx = { age: Math.random() };
     // setState(Math.random());
-    setState((state) => {
-      const newState = structuredClone(state);
-      newState.age = Math.random();
-      return newState;
-    });
+    // setState((state) => {
+    //   const newState = structuredClone(state);
+    //   newState.age = Math.random();
+    //   return newState;
+    // });
+    setState(xx);
   };
 
   return (

@@ -1,9 +1,11 @@
+import * as React from 'react';
+
 interface ClipboardReturn {
   copy: (value: any) => Promise<any>;
 }
 
 const useClipboard = (): ClipboardReturn => {
-  const copy = (value?: any) => {
+  const copy = React.useCallback((value?: any) => {
     return new Promise((resolve, reject) => {
       if (!value) {
         resolve(null);
@@ -24,7 +26,7 @@ const useClipboard = (): ClipboardReturn => {
         reject();
       }
     });
-  };
+  }, []);
 
   return { copy };
 };
