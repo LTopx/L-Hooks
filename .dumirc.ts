@@ -1,17 +1,17 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  base: '/LHooks',
-  publicPath: '/LHooks/',
+  base: '/',
+  publicPath: '/',
   outputPath: 'dist',
-  favicons: ['/LHooks/logo.svg'],
+  favicons: ['/logo.svg'],
   themeConfig: {
     name: 'LHooks',
-    logo: '/LHooks/logo.svg',
+    logo: '/logo.svg',
     github: 'https://github.com/Peek-A-Booo/LHooks',
     hero: {
       actions: [
-        { text: '开始使用', link: '/LHooks/hooks' },
+        { text: '开始使用', link: '/hooks' },
         { text: 'Github', link: 'https://github.com/Peek-A-Booo/LHooks' },
       ],
       features: [
