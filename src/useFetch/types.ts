@@ -22,6 +22,12 @@ export interface FetchConfig {
   headers?: HeadersInit;
 
   /**
+   * 超时时间：单位ms
+   * @default 6000ms
+   */
+  timeout?: number;
+
+  /**
    * 支持流数据处理
    */
   pumb?: (reader: ReadableStreamDefaultReader<Uint8Array>) => void;

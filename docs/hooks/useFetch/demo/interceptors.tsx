@@ -30,7 +30,6 @@ export default () => {
       <Button type="primary" loading={loading} onClick={getData}>
         点击获取数据
       </Button>
-      可打开控制台查看返回结果
     </Space>
   );
 };

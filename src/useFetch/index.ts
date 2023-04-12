@@ -2,12 +2,22 @@ import * as React from 'react';
 import type { BeforeFetchContext, FetchConfig, FetchReturn } from './types';
 import { transformFetchOptions } from './utils';
 
-function useFetch<T>({ url, method, headers, beforeFetch, pumb }: FetchConfig): FetchReturn<T> {
+function useFetch<T>({
+  url,
+  method,
+  headers,
+  timeout = 60000,
+  beforeFetch,
+  pumb,
+}: FetchConfig): FetchReturn<T> {
   const [loading, setLoading] = React.useState(false);
-  const controllerRef = React.useRef<AbortController>();
+  const abortRef = React.useRef<AbortController>();
+  const timerRef = React.useRef<NodeJS.Timeout>();
+
+  const cancel = React.useCallback(() => abortRef.current?.abort(), []);
 
   const run = async (data: any = {}) => {
-    controllerRef.current = new AbortController();
+    abortRef.current = new AbortController();
 
     let { fetchURL, fetchConfig } = transformFetchOptions({ url, method, headers, data });
 
@@ -18,9 +28,20 @@ function useFetch<T>({ url, method, headers, beforeFetch, pumb }: FetchConfig): 
 
     if (beforeFetch) Object.assign(context, await beforeFetch({ url: fetchURL, ...fetchConfig }));
 
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null as any;
+    }
+
+    if (timeout) {
+      timerRef.current = setTimeout(() => {
+        cancel();
+      }, timeout);
+    }
+
     return new Promise<T>((resolve, reject) => {
       setLoading(true);
-      fetch(context.url, { ...fetchConfig, signal: controllerRef.current?.signal })
+      fetch(context.url, { ...fetchConfig, signal: abortRef.current?.signal })
         .then(async (response) => {
           if (!response.ok) return reject(response);
           if (pumb && response.body) return pumb(response.body.getReader());
@@ -34,12 +55,10 @@ function useFetch<T>({ url, method, headers, beforeFetch, pumb }: FetchConfig): 
         })
         .finally(() => {
           setLoading(false);
-          controllerRef.current = undefined;
+          abortRef.current = undefined;
         });
     });
   };
-
-  const cancel = React.useCallback(() => controllerRef.current?.abort(), []);
 
   return { loading, run, cancel };
 }

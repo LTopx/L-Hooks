@@ -40,6 +40,7 @@ const {
     url: string,
     method: FetchRequestMethod,
     headers?: HeadersInit,
+    timeout?: number,
     pumb?: (reader: ReadableStreamDefaultReader<Uint8Array>) => void,
     beforeFetch?: (ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext>>;
 });
@@ -60,5 +61,6 @@ const {
 | url         | 请求地址 url         | `string`                                                            | -      |
 | method      | 请求 Method          | `FetchRequestMethod`                                                | GET    |
 | headers     | 请求 Headers         | `HeadersInit`                                                       | -      |
+| timeout     | 请求 超时时间(ms)    | `number`                                                            | 6000   |
 | pumb        | 流数据处理方法       | `(reader: ReadableStreamDefaultReader<Uint8Array>) => void`         | -      |
 | beforeFetch | 请求前处理配置和参数 | `(ctx: BeforeFetchContext) => Promise<Partial<BeforeFetchContext>>` | -      |
