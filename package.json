@@ -1,6 +1,6 @@
 {
   "name": "l-hooks",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A react hooks library developed with dumi",
   "keywords": [
     "react",
@@ -39,8 +39,7 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
-    "pub:docs": "dumi build && gh-pages -d dist",
-    "pub:hooks": "npm publish"
+    "pub": "npm publish"
   },
   "commitlint": {
     "extends": [
@@ -68,37 +67,36 @@
     "@babel/runtime": "7.21.0"
   },
   "devDependencies": {
-    "@ant-design/cssinjs": "1.8.1",
+    "@ant-design/cssinjs": "1.9.1",
     "@ant-design/icons": "5.0.1",
     "@babel/core": "7.21.4",
-    "@commitlint/cli": "17.5.1",
-    "@commitlint/config-conventional": "17.4.4",
+    "@commitlint/cli": "17.6.1",
+    "@commitlint/config-conventional": "17.6.1",
     "@emotion/react": "11.10.6",
     "@types/qs": "6.9.7",
-    "@types/react": "18.0.34",
+    "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
-    "@umijs/lint": "4.0.64",
-    "antd": "5.4.0",
-    "dumi": "2.1.19",
-    "dumi-theme-antd-style": "0.21.3",
-    "eslint": "8.38.0",
-    "father": "4.1.7",
-    "gh-pages": "5.0.0",
+    "@umijs/lint": "4.0.66",
+    "antd": "5.4.5",
+    "dumi": "2.1.21",
+    "dumi-theme-antd-style": "0.22.1",
+    "eslint": "8.39.0",
+    "father": "4.1.9",
     "husky": "8.0.3",
-    "l-hooks": "0.4.1",
+    "l-hooks": "0.4.4",
     "lint-staged": "13.2.1",
-    "postcss": "8.4.21",
-    "prettier": "2.8.7",
+    "postcss": "8.4.23",
+    "prettier": "2.8.8",
     "prettier-plugin-organize-imports": "3.2.2",
     "prettier-plugin-packagejson": "2.4.3",
     "qs": "6.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
-    "styled-components": "5.3.9",
-    "stylelint": "15.4.0",
+    "styled-components": "5.3.10",
+    "stylelint": "15.6.0",
     "typescript": "5.0.4",
-    "webpack": "5.78.0"
+    "webpack": "5.80.0"
   },
   "peerDependencies": {
     "@types/qs": ">=6.9.7",

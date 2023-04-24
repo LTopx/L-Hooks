@@ -12,6 +12,7 @@ function useFetch<T>({
 }: FetchConfig): FetchReturn<T> {
   const [loading, setLoading] = React.useState(false);
   const abortRef = React.useRef<AbortController>();
+  // fetch timeout timer
   const timerRef = React.useRef<NodeJS.Timeout>();
 
   const cancel = React.useCallback(() => abortRef.current?.abort(), []);
@@ -39,25 +40,42 @@ function useFetch<T>({
       }, timeout);
     }
 
-    return new Promise<T>((resolve, reject) => {
-      setLoading(true);
-      fetch(context.url, { ...fetchConfig, signal: abortRef.current?.signal })
-        .then(async (response) => {
-          if (!response.ok) return reject(response);
-          if (pumb && response.body) return pumb(response.body.getReader());
-          const ans = await (response.headers.get('content-type')?.includes('/json')
+    setLoading(true);
+
+    return fetch(context.url, { ...fetchConfig, signal: abortRef.current?.signal })
+      .then(async (response) => {
+        if (!response.ok) throw response;
+
+        if (pumb && response.body) return pumb(response.body.getReader());
+
+        const headers = response.headers;
+        const contentType = headers.get('content-type');
+        const contentDisposition = headers.get('content-disposition');
+
+        const result =
+          contentType &&
+          (contentType?.indexOf('application/json') !== -1 ||
+            contentType?.indexOf('text/plain') !== -1)
             ? response.json()
-            : response.text());
-          return resolve(ans);
-        })
-        .catch((err) => {
-          reject(err);
-        })
-        .finally(() => {
-          setLoading(false);
-          abortRef.current = undefined;
-        });
-    });
+            : contentDisposition?.indexOf('attachment') !== -1
+            ? response.blob()
+            : response;
+
+        return result;
+      })
+      .catch(async (err) => {
+        const contentType = err.headers?.get('content-type');
+        const errResult =
+          contentType && contentType?.indexOf('application/problem+json') !== -1
+            ? await err.json()
+            : err;
+
+        throw errResult;
+      })
+      .finally(() => {
+        setLoading(false);
+        abortRef.current = undefined;
+      });
   };
 
   return { loading, run, cancel };
