@@ -6,7 +6,6 @@ import {
   TwitterOutlined,
   ZhihuOutlined,
 } from '@ant-design/icons';
-import { inject } from '@vercel/analytics';
 import { Footer } from 'dumi-theme-antd-style';
 import React from 'react';
 
@@ -169,10 +168,6 @@ const footer = [
 ];
 
 export default () => {
-  React.useEffect(() => {
-    inject();
-  }, []);
-
   return (
     <Footer
       bottom={

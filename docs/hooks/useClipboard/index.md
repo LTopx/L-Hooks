@@ -19,12 +19,20 @@ toc: content
 
 ```typescript
 const {
+  isCopied: boolean,
   copy: (value: any) => void
-} = useClipboard();
+} = useClipboard(timeout = 2000);
 ```
+
+### Params
+
+| 属性    | 描述           | 类型     | 默认值 |
+| ------- | -------------- | -------- | ------ |
+| timeout | 复制成功的间隔 | `number` | `2000` |
 
 ### Result
 
-| 参数 | 说明     | 类型                   |
-| ---- | -------- | ---------------------- |
-| copy | 复制内容 | `(value: any) => void` |
+| 属性     | 描述         | 类型                   |
+| -------- | ------------ | ---------------------- |
+| isCopied | 是否复制成功 | `boolean`              |
+| copy     | 复制内容     | `(value: any) => void` |

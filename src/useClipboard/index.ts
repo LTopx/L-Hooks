@@ -1,14 +1,23 @@
 import * as React from 'react';
 
 interface ClipboardReturn {
+  isCopied: boolean;
   copy: (value: any) => void;
 }
 
-const useClipboard = (): ClipboardReturn => {
+const useClipboard = (timeout = 2000): ClipboardReturn => {
+  const [isCopied, setIsCopied] = React.useState<boolean>(false);
+
   const copyByNavigator = async (value: any) => {
     try {
       const content = typeof value === 'object' ? JSON.stringify(value) : value;
-      await navigator.clipboard.writeText(content);
+      navigator.clipboard.writeText(content).then(() => {
+        setIsCopied(true);
+
+        setTimeout(() => {
+          setIsCopied(false);
+        }, timeout);
+      });
     } catch (error) {
       console.warn('Copy failed', error);
     }
@@ -25,6 +34,11 @@ const useClipboard = (): ClipboardReturn => {
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
+      setIsCopied(true);
+
+      setTimeout(() => {
+        setIsCopied(false);
+      }, timeout);
     } catch (error) {
       console.warn('Copy failed', error);
     }
@@ -39,7 +53,7 @@ const useClipboard = (): ClipboardReturn => {
     }
   }, []);
 
-  return { copy };
+  return { isCopied, copy };
 };
 
 export default useClipboard;
